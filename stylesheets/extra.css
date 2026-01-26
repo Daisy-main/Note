@@ -2,7 +2,6 @@
 [data-md-color-scheme="default"] 
 {
 
-
 /* 修改正文链接的默认颜色 */
 .md-typeset a {
   color: #1b589eb6; /* 你的清新橘 */
@@ -65,33 +64,64 @@
   border-radius: 12px;
   overflow: hidden;
 }
-/*标题栏*/
-/* 将代码块复制按钮移动到标题栏 */
-/* .md-code__button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 0.5em;
+
+/* 修改行内代码样式 */
+:not(pre) > code {
+    color: #ff4766 !important; /* 文字颜色 */
+    background-color: #f1f2f6 !important; /* 背景色 */
+    padding: 0.1rem 0.3rem;
+    border-radius: 0.2rem;
 }
 
-/* 当有标题时，调整复制按钮位置到标题栏内 */
-/* .highlight > .filename + pre > code > .md-code__button,
-.highlighttable > .filename + pre > code > .md-code__button {
-  top: -2.8em;
-} */
+/*title*/
 
-/* 或者针对标题栏容器 */
-/* .highlight > .filename {
-  position: relative;
-} */
-
-/* .highlight > .filename ~ pre .md-code__button {
-  position: absolute;
-  top: -2.2em;
-  right: 0.5em;
-} */ 
+/* --- 代码块整体容器（可选，用于控制外边距） --- */
+.md-typeset .md-code {
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
+/* --- 1. 定制标题栏（例如 excel 标题栏） --- */
+.md-typeset .md-code__title {
+  background-color: #217346 !important; /* Excel 绿色 */
+  color: #ffffff !important;            /* 文字白色 */
+  font-weight: 700;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.75rem;
+  
+  /* 圆角处理：只保留顶部圆角 */
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+/* --- 2. 定制下方的代码主体 --- */
+.md-typeset .md-code__title + .highlight {
+  margin-top: 0 !important; /* 强制缝隙消失 */
+}
+
+.md-typeset .md-code__title + .highlight pre {
+  /* 圆角处理：顶部直角，底部圆角 */
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-left-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
+  
+  /* 如果你想改变代码块背景色 */
+  background-color: #f8f9fa !important; 
+  border: 1px solid #e1e4e8;
+  border-top: none; /* 既然有标题栏了，顶部边框可以去掉 */
+}
+
+/* --- 3. 针对没有标题的代码块（保持全圆角） --- */
+.md-typeset .highlight pre {
+    border-radius: 8px;
+}
+
+}
+
+/*#################################################################################*/
 
 /*深色场景*/
 [data-md-color-scheme="slate"] 
