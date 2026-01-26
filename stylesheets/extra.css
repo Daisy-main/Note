@@ -1,0 +1,139 @@
+/*浅色场景*/
+[data-md-color-scheme="default"] 
+{
+
+
+/* 修改正文链接的默认颜色 */
+.md-typeset a {
+  color: #1b589eb6; /* 你的清新橘 */
+  text-decoration: none; /* 去掉下划线（可选） */
+  border-bottom: 1px solid transparent; /* 为悬停动画做准备 */
+  transition: color 0.3s, border-bottom 0.3s;
+}
+
+/* 修改鼠标悬停时的链接颜色 */
+.md-typeset a:hover {
+  color: #f1a533f1; /* 悬停时稍微加深一点橘色 */
+  border-bottom: 1px solid #f1a533f1; /* 悬停时显示下划线 */
+}
+
+
+/* 卡片基础样式美化，浅色场景*/
+.grid.cards > ul > li {
+  border: 1px solid #f0f0f0; /* 极浅的边框 */
+  border-radius: 12px;       /* 圆角 */
+  transition: all 0.5s ease; /* 平滑动画 */
+  background-color: #ffffff;
+}
+
+/* 鼠标悬停时的效果 */
+.grid.cards > ul > li:hover {
+  border-color: #13878b3f;     /* 青绿*/
+  box-shadow: 0 10px 20px rgba(12, 77, 68, 0.158); /* 橘色投影 */
+  transform: translateY(-12px); /* 向上浮动 */
+}
+
+/* 卡片内标题颜色 */
+.grid.cards > ul > li strong {
+  color: #14bdaf7c;
+}
+
+.grid.cards > ul > li:hover strong {
+  color: #f1a533f1;
+}
+
+/* 代码块圆角 未完成 */
+
+/* 1. 针对带标题的代码块容器 */
+.md-code {
+  border-radius: 12px;
+  overflow: hidden; /* 必须加这一行，否则内部背景会遮盖圆角 */
+}
+
+/* 2. 针对普通代码块（不带标题的情况） */
+.highlight {
+  border-radius: 12px;
+}
+
+/* 3. 确保代码框内部的 pre 标签不会超出圆角 */
+.highlight pre {
+  border-radius: inherit;
+}
+
+/* 4. 内容标签页 (Tabs)，改圆角 */
+.tabbed-set {
+  border-radius: 12px;
+  overflow: hidden;
+}
+/*标题栏*/
+/* 将代码块复制按钮移动到标题栏 */
+/* .md-code__button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0.5em;
+}
+
+/* 当有标题时，调整复制按钮位置到标题栏内 */
+/* .highlight > .filename + pre > code > .md-code__button,
+.highlighttable > .filename + pre > code > .md-code__button {
+  top: -2.8em;
+} */
+
+/* 或者针对标题栏容器 */
+/* .highlight > .filename {
+  position: relative;
+} */
+
+/* .highlight > .filename ~ pre .md-code__button {
+  position: absolute;
+  top: -2.2em;
+  right: 0.5em;
+} */ 
+}
+
+
+/*深色场景*/
+[data-md-color-scheme="slate"] 
+{
+
+
+/* 修改正文链接的默认颜色 */
+.md-typeset a {
+  color: #4184cff3; /* 你的清新橘 */
+  text-decoration: none; /* 去掉下划线（可选） */
+  border-bottom: 1px solid transparent; /* 为悬停动画做准备 */
+  transition: color 0.3s, border-bottom 0.3s;
+}
+
+/* 修改鼠标悬停时的链接颜色 */
+.md-typeset a:hover {
+  color: #f1a533f1; /* 悬停时稍微加深一点橘色 */
+  border-bottom: 1px solid #f1a533f1; /* 悬停时显示下划线 */
+}
+
+
+/* 卡片基础样式美化，浅色场景*/
+.grid.cards > ul > li {
+  border: 1px solid #969696a8; /* 极浅的边框 */
+  border-radius: 12px;       /* 圆角 */
+  transition: all 0.5s ease; /* 平滑动画 */
+  background-color: #36393a9a;
+}
+
+/* 鼠标悬停时的效果 */
+.grid.cards > ul > li:hover {
+  border-color: #13878b3f;     /* 青绿*/
+  box-shadow: 0 10px 20px rgba(12, 77, 68, 0.158); /* 橘色投影 */
+  transform: translateY(-12px); /* 向上浮动 */
+}
+
+/* 卡片内标题颜色 */
+.grid.cards > ul > li strong {
+  color: #14bdaf7c;
+}
+
+.grid.cards > ul > li:hover strong {
+  color: #f1a533f1;
+}
+}
