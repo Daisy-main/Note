@@ -1,0 +1,152 @@
+# ============================================================================
+#
+# The configuration produced by default is meant to highlight the features
+# that Zensical provides and to serve as a starting point for your own
+# projects.
+#
+# ============================================================================
+
+[project]
+site_name = "Oranjejuice"
+site_description = "test project."
+site_author = "Oranjejuice"
+copyright = """
+Copyright &copy; 2026 不诗人
+"""
+extra_css = [
+    "stylesheets/extra.css",
+    "https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css",
+    "https://cn-font.claude-code-best.win/packages/ToneOZ-Tsuipita/dist/ToneOZ-Tsuipita-TC/result.css"
+]
+
+# 导航页
+nav = [
+
+    { "Orangejuice" = [
+      {"首页" = "index.md"},
+      {"Zensical" = "mkdocs.md"}] 
+    },
+
+    {
+      "计算机技术" = [
+        {"Cpp" = "Programming/Cpp.md"}
+      ]
+    },
+    {
+      "摄影" = [
+        {"仿色" = "habit/photograph.md"}
+      ]
+    }
+]
+
+[project.theme]
+language = "zh"
+logo = "images/orange-100.png"
+favicon = "images/orange-100.png"
+# 界面交互与功能增强列表
+features = [
+    # 允许用户点击关闭顶部公告栏
+    "announce.dismiss",
+
+    # 开启代码注释气泡：在代码行末使用 (1) 语法可添加悬停说明
+    "content.code.annotate",
+
+    # 在代码块右上角添加"一键复制"按钮
+    "content.code.copy",
+
+    # 脚注预览：鼠标悬停在脚注编号上时，以弹窗形式显示内容
+    "content.footnote.tooltips",
+
+    # 联动标签页：若页面有多个同名标签（如"Python"），切换一个，其他也会同步切换
+    "content.tabs.link",
+
+    # 链接预览：鼠标悬停在站内链接上时显示预览提示
+    "content.tooltips",
+
+    # 智能裁剪：自动隐藏没有可见子页面的导航条目
+    "navigation.prune",
+
+    # 自动展开：进入页面时侧边栏所有层级默认展开
+    "navigation.expand",
+
+    # 顶部标签导航：在页面标题栏显示顶级导航标签
+    "navigation.tabs",
+
+    # 开启页脚导航：在页面底部显示"上一篇"和"下一篇"按钮
+    "navigation.footer",
+
+    # 开启索引页支持：允许将文档直接关联到章节目录（如 section/index.md）
+    "navigation.indexes",
+
+    # 目录跟随：滚动时自动高亮当前章节
+    "toc.follow",
+
+    # 即时导航：点击链接不刷新整页（通过 XHR 加载），大幅提升响应速度
+    "navigation.instant",
+
+    # 即时预取：当用户鼠标悬停在链接上时提前加载内容，减少等待感
+    "navigation.instant.prefetch",
+
+    # 面包屑导航：在页面标题上方显示当前路径（如：首页 / 分类 / 当前页）
+    "navigation.path",
+
+    # 侧边栏分组：在桌面上将顶级菜单以分组标题的形式排列，而非全部折叠
+    "navigation.sections",
+
+    # 回到顶部按钮：向下滚动后，右下角会出现一键返回顶部的交互按钮
+    "navigation.top",
+
+    # 锚点追踪：滚动页面时，地址栏 URL 随当前标题实时更新
+    "navigation.tracking",
+
+    # 搜索高亮：用户通过搜索进入页面后，匹配的关键词会带有背景高亮
+    "search.highlight",
+]
+[project.theme.icon]
+
+
+[[project.theme.palette]]
+scheme = "default"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+scheme = "slate"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to light mode"
+
+[project.markdown_extensions.abbr]
+[project.markdown_extensions.admonition]
+[project.markdown_extensions.attr_list]
+[project.markdown_extensions.def_list]
+[project.markdown_extensions.footnotes]
+[project.markdown_extensions.md_in_html]
+[project.markdown_extensions.toc]
+permalink = true
+[project.markdown_extensions.pymdownx.arithmatex]
+generic = true
+[project.markdown_extensions.pymdownx.betterem]
+[project.markdown_extensions.pymdownx.caret]
+[project.markdown_extensions.pymdownx.details]
+[project.markdown_extensions.pymdownx.emoji]
+emoji_generator = "zensical.extensions.emoji.to_svg"
+emoji_index = "zensical.extensions.emoji.twemoji"
+[project.markdown_extensions.pymdownx.highlight]
+anchor_linenums = true
+line_spans = "__span"
+pygments_lang_class = true
+[project.markdown_extensions.pymdownx.inlinehilite]
+[project.markdown_extensions.pymdownx.keys]
+[project.markdown_extensions.pymdownx.magiclink]
+[project.markdown_extensions.pymdownx.mark]
+[project.markdown_extensions.pymdownx.smartsymbols]
+[project.markdown_extensions.pymdownx.superfences]
+custom_fences = [
+  { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" }
+]
+[project.markdown_extensions.pymdownx.tabbed]
+alternate_style = true
+combine_header_slug = true
+[project.markdown_extensions.pymdownx.tasklist]
+custom_checkbox = true
+[project.markdown_extensions.pymdownx.tilde]

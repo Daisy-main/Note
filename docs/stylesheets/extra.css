@@ -1,0 +1,521 @@
+﻿/* ========================================================================
+   Oranjejuice 自定义样式
+   风格参考：Zensical 中文教程 (wcowin.work)
+
+   1. CSS 变量定义 (:root)
+   2. 主题切换适配 ([data-md-color-scheme])
+   3. 全局元素样式 (body, h1-h6, p, a)
+   4. 导航组件 (header, nav, sidebar)
+   5. 内容组件 (cards, tables, code, admonitions)
+   6. 交互组件 (buttons, tooltips, modals)
+   7. 页脚导航与版权 (footer)
+   8. 响应式适配 (@media)
+   9. 滚动条优化
+   ======================================================================== */
+
+:root {
+  /* === 主色 === */
+  --oj-primary: #f3b558;
+  --oj-primary-light: #f7ebdb;
+  --oj-primary-dark: #e09a30;
+
+  --oj-primary-G: #39e0d2af;
+  --oj-primary-light-G: #d8faf7f8;
+
+  --oj-accent-light: #f3b558;
+  --oj-accent-dark: #d68221ee;
+
+  /* === 语义色 === */
+  --oj-info: #2196f3;
+  --oj-warning: #ff9800;
+  --oj-danger: #f44336;
+  --oj-success: #4caf50;
+
+  /* === 透明色 === */
+  --oj-primary-transparent: rgba(243, 181, 88, 0.15);
+  --oj-primary-transparent-heavy: rgba(243, 181, 88, 0.08);
+  /* --oj-primary-light 半透明版本 */
+  --oj-primary-light-transparent: rgba(247, 235, 219, 0.85);
+  --oj-primary-light-transparent-light: rgba(247, 235, 219, 0.5);
+  --oj-primary-light-transparent-heavy: rgba(247, 235, 219, 0.15);
+  /* #1a1a2e 暗色半透明版本 */
+  --oj-dark-slate: #1a1a2e;
+  --oj-dark-slate-transparent: rgba(26, 26, 46, 0.85);
+  --oj-dark-slate-transparent-light: rgba(26, 26, 46, 0.5);
+  --oj-dark-slate-transparent-heavy: rgba(26, 26, 46, 0.15);
+
+  /* === 布局变量 === */
+  --header-height: 2.4rem;
+  --sidebar-width: 12.2rem;
+  --content-max-width: 46rem;
+}
+
+/* 默认亮色模式 */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: var(--oj-primary) !important;
+  --md-primary-fg-color--light: var(--oj-primary-light) !important;
+  --md-accent-fg-color: var(--oj-primary) !important;
+  --oj-link-color: #2068bbcc;
+  --oj-code-bg: rgba(243, 181, 88, 0.08);
+}
+
+/* 暗色模式 (slate) */
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: var(--oj-primary-dark) !important;
+  --md-primary-fg-color--light: var(--oj-primary) !important;
+  --md-accent-fg-color: var(--oj-primary) !important;
+  --oj-link-color: #82b1ff;
+  --oj-code-bg: rgba(243, 181, 88, 0.10);
+}
+
+
+/* === 并排图片容器 === */
+/* 用于将多张图片放置在同一行并保持同一大小 */
+.image-row {
+  display: flex;  /* 弹性布局，使图片横向排列 */
+  gap: 0.2rem;  /* 图片之间的间距 */
+  justify-content: center;  /* 水平居中对齐 */
+  flex-wrap: wrap;  /* 允许换行（屏幕宽度不足时） */
+}
+
+/* 并排图片样式 */
+.image-row img {
+  width: 350px;  /* 固定宽度 */
+  height: auto;  /* 高度自适应，保持比例 */
+  border-radius: 0rem;  /* 圆角效果 */
+}
+
+/* === 字体 === */
+@import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css');
+@import url('https://cn-font.claude-code-best.win/packages/ToneOZ-Tsuipita/dist/ToneOZ-Tsuipita-TC/result.css');
+
+
+/* body {
+    font-family: "ToneOZ-Tsuipita-TC", "LXGW WenKai", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+button.md-top {
+    font-family: "ToneOZ-Tsuipita-TC", "LXGW WenKai";
+} */
+
+/* 霞鹜文楷 */
+body {
+    font-family: "LXGW WenKai", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: normal;
+}
+
+/* 返回顶部按钮字体 */
+button.md-top {
+    font-family: "LXGW WenKai";
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* === 代码块中文注释字体 === */
+/* 针对语法高亮中的注释类，设置中文字体以提升中文注释的可读性 */
+/* .md-typeset .highlight .cp,     预处理指令 */
+.md-typeset .highlight .c1,    /* 单行注释 */
+.md-typeset .highlight .cm,    /* 多行注释 */
+.md-typeset .highlight .cs,    /* 文档注释 */
+.md-typeset .highlight .ch,    /* 标题注释 */
+.md-typeset .highlight .c {   /* 单行注释 */
+    font-family: "LXGW WenKai", "ToneOZ-Tsuipita-TC", "Roboto Mono", monospace;
+}
+/* === 标题样式 h1-h6 === */
+.md-typeset h1 {
+  border-bottom: none;
+  padding-bottom: 0.75rem;
+  position: relative;
+}
+
+.md-typeset h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 4rem;
+  height: 3px;
+  background: linear-gradient(90deg, var(--oj-primary), var(--oj-primary-light));
+  border-radius: 2px;
+}
+
+.md-typeset h2 {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.md-typeset h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.4em;
+  width: 4px;
+  height: 1.1em;
+  background: var(--oj-primary);
+  border-radius: 2px;
+}
+
+/* === 链接样式 === */
+.md-typeset a {
+  color: var(--oj-link-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.md-typeset a:hover {
+  color: var(--oj-primary) !important;
+  opacity: 0.85;
+}
+
+/* === 列表样式 === */
+.md-typeset ul li::marker {
+  color: var(--oj-primary);
+}
+
+/* === 表格样式 === */
+.md-typeset table {
+  border-radius: 0.2rem;
+}
+
+.md-typeset table tr:nth-child(even) {
+  background-color: var(--oj-primary-transparent);
+}
+
+/* === 导航组件 === */
+/* 页眉标题栏 - 浅色模式：白色背景，降低与内容的对比度 */
+[data-md-color-scheme="default"] .md-header {
+  background: var(--oj-primary-light-transparent-heavy)  !important;
+  color: var(--md-default-fg-color);
+  box-shadow: none;  /* 移除底部阴影 */
+  border-bottom: none;  /* 移除底部边框 */
+  backdrop-filter: blur(20px);  /* 毛玻璃模糊效果 */
+  -webkit-backdrop-filter: blur(20px);  /* Safari 兼容 */
+  }
+
+[data-md-color-scheme="default"] .md-header__title {
+  color: var(--md-default-fg-color);
+}
+
+[data-md-color-scheme="default"] .md-header__button {
+  color: var(--md-default-fg-color--light);
+}
+
+[data-md-color-scheme="default"] .md-header__button:hover {
+  color: var(--oj-primary);
+}
+
+/* 暗色模式页眉 */
+[data-md-color-scheme="slate"] .md-header {
+  background: var(--oj-dark-slate-transparent-heavy) !important;
+  box-shadow: none;  /* 移除底部阴影 */
+  border-bottom: none;  /* 移除底部边框 */
+  backdrop-filter: blur(20px);  /* 毛玻璃模糊效果 */
+  -webkit-backdrop-filter: blur(20px);  /* Safari 兼容 */
+}
+
+/* 顶部标签导航 (navigation.tabs) - 无缝衔接 */
+.md-tabs {
+  background: var(--oj-primary-light-transparent-heavy);
+  margin-top: 0 !important;     /* 强制去除顶部外边距 */
+  padding-top: 0 !important;    /* 强制去除顶部内边距 */
+  border-top: none;             /* 移除顶部边框 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);  /* 只保留底部阴影 */
+}
+
+[data-md-color-scheme="slate"] .md-tabs {
+  background: var(--oj-dark-slate-transparent-heavy) !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  border-top: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.md-tabs__link {
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+.md-tabs__link--active {
+  color: var(--oj-primary) !important;
+  opacity: 1;
+}
+
+.md-tabs__link:hover {
+  color: var(--oj-primary);
+  opacity: 1;
+}
+
+/* 搜索框 - 适配浅色页眉 */
+[data-md-color-scheme="default"] .md-search__input {
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 0.1rem;
+  color: var(--md-default-fg-color);
+}
+
+[data-md-color-scheme="default"] 
+
+[data-md-color-scheme="default"] .md-search__input:hover {
+  background: var(--md-default-fg-color--lightest);
+}
+
+/* 暗色模式搜索框 */
+[data-md-color-scheme="slate"] .md-search__input {
+  background: rgba(255, 255, 255, 0.10);
+  border-radius: 0.1rem;
+}
+
+
+
+.md-nav__item--section > .md-nav__link {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.md-nav__item--section > .md-nav__link::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--oj-primary);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.md-nav__link--active {
+  color: var(--oj-primary) !important;
+  font-weight: 700;
+}
+
+.md-nav__link:hover {
+  color: var(--oj-primary);
+}
+
+/* === 卡片 (Cards) 美化 === */
+/* 卡片基础样式 - 首页的网格卡片 */
+.grid.cards > ul > li {
+  border: 1px solid var(--md-default-fg-color--lightest);  /* 浅色边框 */
+  border-radius: 0.8rem;  /* 圆角效果 */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);  /* 平滑过渡动画 */
+  background-color: var(--md-default-bg-color);  /* 背景色 */
+  padding: 0.2rem 0.6rem;  /* 内边距 */
+}
+
+/* 卡片悬停效果 */
+.grid.cards > ul > li:hover {
+  border-color: var(--oj-primary-light-transparent-heavy);  /* 边框变浅橘色 */
+  box-shadow: 0 4px 20px rgba(243, 181, 88, 0.2);  /* 橘色柔和阴影 */
+  transform: scale(1.02);  /* 卡片轻微放大 */
+  background-color: var(--oj-primary-light-transparent-heavy);  /* 半透明橘色背景 */
+}
+
+/* 卡片第一个段落的上边距 */
+.grid.cards > ul > li > p:first-child {
+  margin-top: 0.8rem;  /* 增加顶部间距 */
+}
+
+/* 卡片标题样式（加粗文字） */
+.grid.cards > ul > li strong {
+  color: var(--oj-primary);  /* 标题使用主橘色 */
+  font-size: 1.1em;  /* 字体稍大 */
+  display: inline-block;  /* 块级元素 */
+  margin-bottom: 0.2rem;  /* 底部间距 */
+}
+
+/* 卡片内大图标 (twemoji) */
+.grid.cards > ul > li .twemoji.lg svg {
+  width: 1.8em;  /* 图标宽度 */
+  height: 1.8em;  /* 图标高度 */
+  vertical-align: middle;  /* 垂直居中对齐 */
+}
+
+/* === 行内代码 === */
+:not(pre) > code {
+  color: var(--oj-primary-dark) !important;
+  background-color: var(--oj-code-bg) !important;
+  padding: 0.15em 0.4em;
+  border-radius: 0.3rem;
+  font-size: 0.85em;
+}
+
+[data-md-color-scheme="slate"] :not(pre) > code {
+  color: var(--oj-primary-light) !important;
+}
+
+/* === 引用块 (Admonitions) === */
+.md-typeset .admonition,
+.md-typeset details {
+  border-left-color: var(--oj-primary) !important;
+}
+
+.md-typeset .admonition > .admonition-title,
+.md-typeset details > summary {
+  background-color: var(--oj-primary-transparent);
+  border-bottom-color: var(--oj-primary-light);
+}
+
+/* === 代码块容器 === */
+.md-typeset pre > code {
+  border-radius: 0.5rem;
+}
+
+.md-typeset .highlight .hll {
+  background-color: var(--oj-primary-transparent);
+  border-left: 3px solid var(--oj-primary);
+}
+
+.md-clipboard {
+  color: var(--oj-primary-light);
+}
+
+.md-clipboard:hover {
+  color: var(--oj-primary);
+}
+
+/* === 内容标签页 (Tabs) 美化 === */
+.tabbed-set .tabbed-labels {
+  background: var(--oj-primary-transparent-heavy);
+  border-radius: 0.3rem 0.3rem 0 0;
+}
+
+.tabbed-set .tabbed-labels label {
+  transition: all 0.2s ease;
+}
+
+.tabbed-set input:checked + .tabbed-labels label {
+  color: var(--oj-primary-dark) !important;
+  font-weight: 600;
+}
+
+[data-md-color-scheme="slate"] .tabbed-set input:checked + .tabbed-labels label {
+  color: var(--oj-primary-light) !important;
+}
+
+/* === 页脚：简洁分离 (风格参考 Zensical Chinese Tutorial) === */
+/* 上一页/下一页导航 */
+.md-footer__inner {
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  overflow: hidden;
+  background: transparent;
+}
+
+.md-footer__inner .md-footer__link {
+  transition: all 0.25s ease;
+  overflow: hidden;
+}
+
+.md-footer__inner .md-footer__link:hover {
+  opacity: 0.8;
+}
+
+.md-footer__inner .md-footer__title {
+  font-size: 0.85rem;
+}
+
+.md-footer__inner .md-footer__direction {
+  font-size: 0.68rem;
+  opacity: 0.6;
+}
+
+[data-md-color-scheme="default"] .md-footer__inner .md-footer__link:hover {
+  color: var(--oj-primary);
+}
+
+[data-md-color-scheme="slate"] .md-footer__inner .md-footer__link:hover {
+  color: var(--oj-primary-light);
+}
+
+/* 版权信息区 - 干净简洁 */
+.md-footer-meta {
+  background: transparent;
+  border-top: none;
+}
+
+.md-footer-meta__inner {
+  padding-top: 0.6rem;
+}
+
+/* === 回到顶部按钮 === */
+.md-top {
+  transition: all 0.3s ease;
+}
+
+.md-top:hover {
+  background: var(--oj-primary-light);
+  color: var(--oj-primary-dark);
+}
+
+/* === 滚动条优化 === */
+/* Firefox 滚动条样式 */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--oj-primary-light) transparent;
+}
+
+/* Chrome/Safari 滚动条样式 */
+*::-webkit-scrollbar {
+  width: 4px;   /* 垂直滚动条宽度 */
+  height: 4px;  /* 水平滚动条高度 */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;  /* 轨道透明 */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--oj-primary-light);
+  border-radius: 8px;       /* 圆角一致 */
+  min-height: 32px;         /* 垂直滚动条最小高度 */
+  min-width: 32px;          /* 水平滚动条最小宽度 */
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--oj-primary);  /* 悬停变深 */
+}
+
+/* 侧边栏滚动条透明度 */
+.md-sidebar__scrollwrap::-webkit-scrollbar-thumb {
+  background-color: var(--oj-primary-light);
+  opacity: 0.5;
+}
+
+/* 侧边栏抽屉圆角样式 */
+.md-drawer {
+  border-radius: 0 0.8rem 0.8rem 0;  /* 右下和右上圆角 */
+  overflow: hidden;  /* 确保内容不溢出圆角 */
+}
+
+/* 侧边栏头部背景 */
+.md-sidebar--primary {
+  border-radius: 0 0.8rem 0.8rem 0;
+}
+
+/* 暗色模式滚动条适配 */
+[data-md-color-scheme="slate"] {
+  scrollbar-color: var(--oj-primary) transparent;
+}
+
+[data-md-color-scheme="slate"] *::-webkit-scrollbar-thumb {
+  background-color: var(--oj-primary);
+}
+
+[data-md-color-scheme="slate"] *::-webkit-scrollbar-thumb:hover {
+  background-color: var(--oj-primary-light);
+}
+
+/* === 响应式适配 === */
+@media screen and (max-width: 76.1875em) {
+  [data-md-color-scheme="default"] .md-nav--primary .md-nav__title {
+    background: var(--oj-primary-light-transparent-heavy);
+    color: var(--md-default-fg-color);
+      }
+}
+
+@media screen and (max-width: 59.9375em) {
+  [data-md-color-scheme="default"] .md-header {
+    background: var(--oj-primary-light-transparent-heavy) !important;
+      }
+}
+
+
+
