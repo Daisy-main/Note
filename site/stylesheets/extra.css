@@ -117,7 +117,7 @@ button.md-top {
   content: "";
   position: absolute;
   left: 0;
-  top: 0.4em;
+  top: 0.25em;
   width: 4px;
   height: 1.1em;
   background: var(--oj-primary);
