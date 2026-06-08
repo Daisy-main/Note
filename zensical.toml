@@ -10,6 +10,8 @@
 site_name = "Oranjejuice"
 site_description = "test project."
 site_author = "Oranjejuice"
+repo_url = "https://github.com/Daisy-main/Note"
+repo_name = "GitHub"
 copyright = """
 Copyright &copy; 2026 不诗人
 """
